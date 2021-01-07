@@ -1,0 +1,50 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+  <!-- 
+  *ngFor loops through products.ts. How do we know that 'products'
+  equals products.ts. Is this assiociation done in the .ts file 
+  for this element? 
+  
+  It looks like we are creating 'product' as variable in the above
+  line of code. Each item in products.ts is now a 'product' in this
+  page or at least in this division.
+  -->
+  <h3>
+    <a [title]="product.name + ' details'">
+      <!--
+    Where is [title] coming from? I get it's "property binding".
+    But... where...???
+    -->
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+    <!-- 
+    *ngIF loops through but only "creates the element" 
+    if the property has a value. In this case, it's
+    only returning the value if there is actually a description.
+    -->
+    Description: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    <!-- click is the event. The () is "event binding". -->
+    <!-- How do we know where share() is? -->
+    Share
+  </button>
+
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+
+
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
